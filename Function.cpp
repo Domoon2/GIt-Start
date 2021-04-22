@@ -27,25 +27,42 @@ int random(int high, int low);
 int max(int num1, int num2, int num3);
 int max(int num1, int num2, int num3, int num4);
 
-int main()
-{
-	int high = 99;
-	int low = 10;	
-	int arr[10] = {} ;
-	int counter = 1;
 
-	for (int j = 0; j <= 4; j++)
+
+int main()
+{	
+	int count = 0;
+	int tmp;
+	int same = 0;
+	const int number = 6;
+	int save[number];
+
+	srand(time(NULL));
+
+	while (count < number)
 	{
-		int sum = 0;
-		for (int i = 1; i <= 10; i++)
+		same = 0;
+		tmp = rand() % 45 + 1;
+		for (int i = 0; i < count; i++)
 		{
-			arr[i - 1] = rand() % (high - low + 1) + low;
-			sum += arr[i - 1];
-			cout << "   " << arr[i - 1];
+			if (tmp == save[i])
+			{
+				same = 1;
+				break;
+			}
 		}
-		cout <<"  "<< counter<< "세트 합은 : " << sum << endl;
-		counter++;
+		if (same == 0)
+		{
+			save[count] = tmp;
+			count++;
+		}
 	}
+	cout << "추첨 숫자";
+	for (int i = 0; i < number; i++)
+	{
+		cout << "  "<<save[i];
+	}
+		
 }
 
 bool isEven(int y)
@@ -232,3 +249,59 @@ void printResult(double multiplier, double futureValue)
 	cout << "미래 가치" << fixed << setprecision(3);
 	cout << futureValue << endl;
 }
+
+	/*int zero_counter = 0; //동전던지기
+	int one_counter = 0;
+	srand(time(NULL));
+	for (int i = 1; i <= 1000000; i++)
+	{
+		if (rand() % 2 == 0)
+		{
+			zero_counter++;
+		}
+		else
+		{
+			one_counter++;
+		}
+	}
+	cout << "0은" << zero_counter << "  1은" << one_counter;
+	return 0;  */
+
+//srand(time(NULL));
+//for (int i = 1; i <= 10; i++) //랜덤 소수 뽑기
+//{
+//	cout << rand() % 10 / 10.0 << endl;
+//}
+
+	/*int count = 0; //로또
+	int tmp;
+	int same = 0;
+	const int number = 6;
+	int save[number];
+
+	srand(time(NULL));
+
+	while (count < number)
+	{
+		same = 0;
+		tmp = rand() % 45 + 1;
+		for (int i = 0; i < count; i++)
+		{
+			if (tmp == save[i])
+			{
+				same = 1;
+				break;
+			}
+		}
+		if (same == 0)
+		{
+			save[count] = tmp;
+			count++;
+		}
+	}
+	cout << "추첨 숫자";
+	for (int i = 0; i < number; i++)
+	{
+		cout << "  " << save[i];
+	}*/
+
