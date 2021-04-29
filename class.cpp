@@ -2,44 +2,49 @@
 #include <iomanip>
 #include <cmath>
 #include <cstdlib>
+#include <cassert>
 
 using namespace std;
 
-class Rect  //»ç°¢Çü Çì´õ
+class Rect  //ì‚¬ê°í˜• í—¤ë”
 {
 private:
-	double width; //µ¥ÀÌÅÍ ¸â¹ö
+	double width; //ë°ì´í„° ë©¤ë²„
 	double height;
 public:
-	Rect(double width, double height); //¸Å°³º¯¼ö°¡ ÀÖ´Â »ı¼ºÀÚ
-	Rect(); //±âº» »ı¼ºÀÚ
-	~Rect(); //¼Ò¸êÀÚ
+	Rect(double width, double height); //ë§¤ê°œë³€ìˆ˜ê°€ ìˆëŠ” ìƒì„±ì
+	Rect(); //ê¸°ë³¸ ìƒì„±ì
+	~Rect(); //ì†Œë©¸ì
 	Rect(const Rect& rect);
-	double getWidth() const; //Á¢±ÙÀÚ
+	double getWidth() const; //ì ‘ê·¼ì
 	double getHeight() const;
 	double getPerimeter() const;
 	double getArea() const;
-	void setWidth(double value); //¼³Á¤ÀÚ
+	void setWidth(double value); //ì„¤ì •ì
 	void setHeight(double value);
 }; 
 Rect::Rect(double wid, double hei)
 	:width(wid),height(hei)
-{
-	cout << "¸Å°³º¯¼ö°¡ ÀÖ´Â »ı¼ºÀÚ°¡ È£Ãâ µÊ" << endl;
+ if ((wid <= 0.0) || (hei <= 0.0))
+	{
+		cout << "Rect ê°ì²´ë¥¼ ìƒì„±í• ìˆ˜ ì—†ë‹¤"<<endl;
+		assert(false);
+	}
+	cout << "ë§¤ê°œë³€ìˆ˜ê°€ ìˆëŠ” ìƒì„±ìê°€ í˜¸ì¶œ ë¨" << endl;
 }
 Rect::Rect()
 	: width(5.5), height(5)
 {
-	cout << "±âº» »ı¼ºÀÚ È£Ãâ" << endl;
+	cout << "ê¸°ë³¸ ìƒì„±ì í˜¸ì¶œ" << endl;
 }
 Rect::Rect(const Rect& rect)
 	: width(rect.width), height(rect.height)
 {
-	cout << "º¹»ç »ı¼ºÀÚ È£Ãâ" << endl;
+	cout << "ë³µì‚¬ ìƒì„±ì í˜¸ì¶œ" << endl;
 }
 Rect::~Rect()
 {
-	cout << "¼Ò¸êÀÚ È£Ãâ" << width << height;
+	cout << "ì†Œë©¸ì í˜¸ì¶œ" << width << height;
 	cout << endl;
 }
 double Rect::getWidth() const
@@ -71,10 +76,10 @@ int main()
 	Rect rect1;
 	rect1.setHeight(5);
 	rect1.setWidth(5);
-	cout << "³ôÀÌ :" << rect1.getHeight()<<endl;
-	cout << "°¡·Î" << rect1.getWidth() << endl;
-	cout << "³ĞÀÌ" << rect1.getArea() << endl;
-	cout << "µÑ·¹" << rect1.getPerimeter() << endl;
+	cout << "ë†’ì´ :" << rect1.getHeight()<<endl;
+	cout << "ê°€ë¡œ" << rect1.getWidth() << endl;
+	cout << "ë„“ì´" << rect1.getArea() << endl;
+	cout << "ë‘˜ë ˆ" << rect1.getPerimeter() << endl;
 
 	Rect rect2(5, 4);
 	
